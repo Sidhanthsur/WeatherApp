@@ -6,6 +6,9 @@ Image} from 'react-native';
 
 
 
+
+
+
 class Forecast extends Component{
   render(){
     return(
@@ -47,7 +50,7 @@ class Hello extends Component{
 
 handleSubmit = ()=>{
   console.log("pressed");
-  fetch('http://api.openweathermap.org/data/2.5/weather?q='+this.state.zipcode+"&units=imperial&APPID=d44082e316fc5b2328bee1f475c2b01a")
+  fetch('http://api.openweathermap.org/data/2.5/weather?q='+this.state.zipcode+"&units=imperial")
   .then((response)=> response.json())
   .then((responseJSON)=>{
     console.log(responseJSON);
@@ -66,10 +69,10 @@ handleSubmit = ()=>{
   render(){
     return(
       
-     <Image style={styles.bgImage}
-    // source={{uri: 'http://herotalkies-a.akamaihd.net/Images/Device/Android/Mobile/login_potrait_bg.jpg'}} >
-      source = {require('./Assets/space.jpg')}
-      >
+     
+      <View style = {{backgroundColor: '#ffffff', flex: 1}}>
+   
+      <View style = {styles.innerView}>
       <Text style= {styles.welcome}>
       Current weather for   
       </Text>
@@ -85,7 +88,8 @@ handleSubmit = ()=>{
       temp = {this.state.forecast.temp}
       city = {this.state.forecast.city}>
       </Forecast>
-      </Image>
+      </View>
+      </View>
  
     
     );
@@ -109,9 +113,9 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF'
   },
-  bgImage: {
-   
-    flex:1
+  innerView: {
+    backgroundColor: '#000000',
+    opacity: 0.4
   }
 })
 
